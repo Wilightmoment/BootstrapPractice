@@ -1,0 +1,11 @@
+.nowrap{
+	white-space: nowrap;
+}
+
+/*利用媒體查詢針對不超過48em的裝置改變table元素內btn字體的大小*/
+@media (max-width: 48em) {
+	table .btn{
+		font-size: 0.75rem;
+		font-size: 3.5vw;
+	}
+}
