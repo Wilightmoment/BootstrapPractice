@@ -12,22 +12,51 @@
 	<![endif]-->
 </head>
 <body>
-	<header>
-		<div class="container">
-			<!-- 橫列1 -->
-			<div class="row">
-				<a class="brand pull-left" href="#">公司名稱</a>
-				<!--inline 使項目在同一橫列-->
-				<!--unstyle 移除前面圓點-->
-				<ul class="list-inline list-unstyled pull-right">
-					<li><a href="#about">關於產品</a></li>
-					<li><a href="#features">特色</a></li>
-					<li><a href="#pricing">價格</a></li>
-					<li><a href="contact.html">聯絡我們</a></li>
-				</ul>
-			</div>
+	<!--導覽列元件一定要用.navbar和.navbar-default類別-->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="navbar-header">
+			<!--brand作用在於以適當的字體大小和內距將標題品牌化-->
+			<a class="navbar-brand" href="index.html">公司名稱</a>
+			<!--建立切換按鈕 data-target 屬性必須指定摺疊的目標元素-->
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+				<span class="sr-only">切換導覽</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 		</div>
-	</header>	
+
+		<!--使用按鈕式下拉元件時，必須嚴格遵守下面的寫法-->
+		<div class="btn-group pull-right">
+			<!--與下方註解寫法不同，這裡將按鈕進行分割-->
+			<button type="button" class="btn btn-primary">客戶專區</button>
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span class="caret"></span>
+				<span class="sr-only">切換下拉選單</span>
+			</button>
+			<!--<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				客戶專區<span class="caret"></span>
+			</button>-->
+			<ul class="dropdown-menu">
+				<li><a href="#">動作</a></li>
+				<li><a href="#">另一個動作</a></li>
+				<li><a href="#">別的東西</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="#">被分隔的連結</a></li>
+			</ul>
+		</div>
+
+		<!--必須指定是哪個元素要摺疊，所以要套用 collapse 與 navbar-collapse-->
+		<div id="nav-menu" class="collapse navbar-collapse navbar-right">
+			<ul class="nav navbar-nav">
+				<li><a href="#about">關於產品</a></li>
+				<li><a href="#features">特色</a></li>
+				<li><a href="#pricing">價格</a></li>
+				<li><a href="contact.html">聯絡我們</a></li>
+			</ul>
+		</div>
+	</nav>
+		
 
 	<section id="intro-header" >
 		<div class="container">
@@ -112,22 +141,43 @@
 			<!--橫列6-->
 			<div class="row">
 				<div class="col-sm-2 col-md-4">
-					<div class="feature">特色</div>
+					<div class="feature">
+						<!--使用Glyphicon Halflings圖集 它由bootstrap所提供-->
+						<!--aria-hidden="true" 因為這個字體代表unicode，也就是說這些圖可能代表某些字
+							所以必須設為true讓某些閱讀器不會將它改成"字"-->
+						<span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span>
+						<span class="feature-tag">產品焦點</span>
+					</div>
 				</div>
 				<div class="col-sm-2 col-md-4">
-					<div class="feature">特色</div>
+					<div class="feature">
+						<span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+						<span class="feature-tag">以教學為熱情</span>
+					</div>
 				</div>
 				<div class="col-sm-2 col-md-4">
-					<div class="feature">特色</div>
+					<div class="feature">
+						<span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+						<span class="feature-tag">傳遞知識</span>
+					</div>
 				</div>
 				<div class="col-sm-2 col-md-4">
-					<div class="feature">特色</div>
+					<div class="feature">
+						<span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>
+						<span class="feature-tag">節省你白天的時間</span>
+					</div>
 				</div>
 				<div class="col-sm-2 col-md-4">
-					<div class="feature">特色</div>
+					<div class="feature">
+						<sapn class="glyphicon glyphicon-sunglasses" aria-hidden="true"></sapn>
+						<sapn class="feature-tag">讓它更花俏一點</sapn>
+					</div>
 				</div>
 				<div class="col-sm-2 col-md-4">
-					<div class="feature">特色</div>
+					<div class="feature">
+						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+						<span class="feature-tag">用愛製作</span>
+					</div>
 				</div>
 			</div>
 		</div>
