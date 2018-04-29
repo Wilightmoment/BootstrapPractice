@@ -83,7 +83,7 @@
 
 					<ul class="dropdown-menu">
 						<li><a href="#">個人檔案</a></li>
-						<li><a href="#">設定</a></li>
+						<li><a href="settings.html">設定</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="#">登出</a></li>
 					</ul>
@@ -156,11 +156,27 @@
 			<div id="main" class="col-sm-12 col-md-6">
 
 				<!--bootstrap路徑導覽列-->
-				<ol class="breadcrumb card">
+				<!-- <ol class="breadcrumb card">
 					<li><a href="#">首頁</a></li>
 					<li><a href="#">個人檔案</a></li>
 					<li class="active">動態消息</li>
-				</ol>
+				</ol> -->
+
+				<!--通知元件-->
+				<div class="alert alert-info" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h3>張貼新貼文</h3>
+					<!--progress是一條將在處理進行期間逐漸被填滿的灰色長矩形-->
+					<div class="progress">
+						<!--progress-bar 用來填滿progress的橫條-->
+						<!--透過修改width:50% 改變目前進度-->
+						<!--progress-bar-striped為條紋效果ˋ，active則是動畫效果-->
+						<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%">							
+						</div>
+					</div>
+				</div>
 
 				<div id="main-card" class="card">
 					<form id="new-message">

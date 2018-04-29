@@ -299,3 +299,96 @@ div#who-follow li .info .glyphicon{
 div#app-info{
 	margin-top:2rem;
 }
+
+.alert h3{
+	margin:0 0 1rem;
+	font-size: 1.4em;
+}
+
+.alert{
+	border-left-width:0.5rem;
+}
+/*做出動畫效果*/
+@keyframes w70{
+	from{width:0%;}
+	to{width:70%;}
+}
+/*做出動畫效果，將我們的動畫持續一秒鐘，並只播放1次，固定義為forwards
+後面要加讓原來的動畫樣式*/
+.progress-bar.active{
+	animation:w70 1s ease forwards,
+		progress-bar-stripes 2s linear infinite;
+}
+/*使用了+選取器，所以每個接在.card之後的.card元素都會自動建立上邊緣*/
+.row .card+.card{
+	margin-top:2rem;
+}
+
+#profile-settings .nav-stacked li{
+	border-bottom:1px solid #e5e5e5;
+	margin:0;
+}
+
+#profile-settings .nav-stacked a{
+	border-radius:0;
+}
+
+#profile-settings .nav-stacked li:first-child a{
+	border-radius:0.4rem 0.4rem 0 0;
+}
+
+#profile-settings .nav-stacked li:last-child{
+	border-bottom: 0;
+}
+
+#profile-settings .nav-stacked li:last-child a{
+	border-radius: 0 0 0.4rem 0.4rem;
+}
+
+#account-tabs >li{
+	border-bottom: 0.1rem solid #e5e5e5;
+}
+
+#account-tabs a{
+	border-bottom: 0;
+}
+
+#account-tabs li.active{
+	border-bottom:0;
+}
+
+#main .tab-content{
+	padding:2em;
+	margin-top:-0.1rem;
+}
+
+#account-tabs >li{
+	border-bottom:0;
+}
+
+#account-tabs{
+	position: relative;
+	z-index: 99;
+}
+
+#main .form-horizontal .form-group:last-child{
+	margin-bottom: 0;
+}
+
+.list-group-item{
+	border-color:#e5e5e5;
+}
+
+#right-content .list-group .label{
+	float:right;
+}
+
+#right-content .list-group .label{
+	padding:0.3rem 0.6rem;
+}
+
+#right-content .list-group .badge.glyphicon-star{
+	background-color: #f0ad4e;
+	padding: 0.4rem;
+	padding-left: 0.5rem;
+}
