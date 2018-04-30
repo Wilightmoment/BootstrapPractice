@@ -26,7 +26,8 @@
 					<span class="icon-bar"></span>
 				</button>
 
-				<button id="tweet" class="btn btn-default pull-right visible-xs-block">
+				<!--data-toggle是指以什麼事件觸發， modal是模態視窗，像是dialog-->
+				<button id="tweet" class="btn btn-default pull-right visible-xs-block" data-toggle="modal" data-target="#tweet-modal">
 					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 					發文
 				</button>
@@ -50,7 +51,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="#" role="button" data-toggle="modal" data-target="#messages-modal">
 						<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 						訊息
 						</a>
@@ -71,7 +72,7 @@
 					</li>
 				</ul>
 
-				<button id="tweet" class="btn btn-default pull-right hidden-xs">
+				<button id="tweet" class="btn btn-default pull-right hidden-xs" data-toggle="modal" data-target="#tweet-modal">
 					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 					發文
 				</button>
@@ -163,7 +164,7 @@
 				</ol> -->
 
 				<!--通知元件-->
-				<div class="alert alert-info" role="alert">
+				<div class="alert alert-info hide" role="alert">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -196,16 +197,19 @@
 								<p>在你羞辱狗狗時，你也羞辱了自己!</p>
 							</div>
 							<div class="action-list">
-								<a href="#">
+								<!--使用工具提示(tooltip)需要三個屬姓data-toggle、data-placement、title-->
+								<!--使用tooltip一定要去js初始化它
+									$('[data-toggle="tooltip"]').tooltip();-->
+								<a href="#" data-toggle="tooltip" data-placement="bottom" title="回覆">
 									<span class="glyphicon glyphicon-share-alt" aria-hidden="true">			
 									</span>
 								</a>
-								<a href="#">
+								<a href="#" data-toggle="tooltip" data-placement="bottom" title="轉推">
 									<span class="glyphicon glyphicon-refresh" aria-hidden="true">			
 									</span>
 									<span class="retweet-count">6</span>
 								</a>
-								<a href="#">
+								<a href="#" data-toggle="tooltip" data-placement="bottom" title="棒!">
 									<span class="glyphicon glyphicon-star" aria-hidden="true">			
 									</span>
 								</a>
@@ -219,16 +223,16 @@
 								<p>這是狗兒的一小步，卻是毛小孩的一大步!</p>
 							</div>
 							<div class="action-list">
-								<a href="#">
+								<a href="#" data-toggle="tooltip" data-placement="bottom" title="回覆">
 									<span class="glyphicon glyphicon-share-alt" aria-hidden="true">			
 									</span>
 								</a>
-								<a href="#">
+								<a href="#" data-toggle="tooltip" data-placement="bottom" title="轉推">
 									<span class="glyphicon glyphicon-refresh" aria-hidden="true">			
 									</span>
 									<span class="retweet-count">6</span>
 								</a>
-								<a href="#">
+								<a href="#" data-toggle="tooltip" data-placement="bottom" title="棒!">
 									<span class="glyphicon glyphicon-star" aria-hidden="true">			
 									</span>
 								</a>
@@ -267,20 +271,23 @@
 								<img src="imgs/cat.jpg" class="img-responsive">
 								<div class="info">
 									<strong>瘋狂貓咪</strong>
-									<button class="btn btn-default">
+									<!--為了解決popover跨瀏覽器的相容性問題，將button改成a 並加入role=button、tabindex等屬姓-->
+									<!--tabindex=-1 使使用者不能透過tab來選取-->
+									<!--trigger="focus" 表示只要popover沒有被focus就會被關閉，反之 ，另外還有hover屬性-->
+									<a href="#" role="button" tabindex="-1" class="btn btn-default" data-toggle="popover" data-trigger="focus" title="你或許想要關注">
 										<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 										關注
-									</button>
+									</a>
 								</div>
 							</li>
 							<li>
 								<img src="imgs/ration.jpg" class="img-responsive">
 								<div class="info">
 									<strong>免費配給警報</strong>
-									<button class="btn btn-default">
+									<a href="#" role="button" tabindex="-1" class="btn btn-default" data-toggle="popover" data-trigger="focus" title="你或許想要關注">
 										<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 										關注
-									</button>
+									</a>
 								</div>
 							</li>
 						</ul>
@@ -301,6 +308,92 @@
 					<div class="card-footer">
 						<a href="#">連結其他的通訊錄</a>
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--modal要寫在所有bootstarp外，換言之他是獨立存在-->
+	<!--在模態視窗的主體中使用網格結構時，不用建立容器，直接建立row即可-->
+	<div class="modal fade" id="tweet-modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="moadl-title">發佈新貼文</h4>
+				</div>
+
+				<div class="modal-body">					
+					<textarea class="form-control" rows="4" placeholder="你想說什麼?" maxlength="140"></textarea>				
+				</div>
+
+				<div class="modal-footer">
+					<!--利用char-count來讓使用者知道剩餘幾個字元可以輸入
+						此段請見js檔-->
+					<span class="char-count pull-left" data-max="140">140</span>
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						關閉
+					</button>
+					<button type="button" class="btn btn-primary">
+						儲存變更
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="messages-modal" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">狗狗訊息</h4>
+					<button type="button" class="btn btn-primary btn-message">新訊息
+					</button>
+				</div>
+				<div class="modal-body">
+					<ul class="list-unstyled">
+			            <li>
+			         	    <a href="#">
+			                	<img src="imgs/laika.jpg" class="img-circle">
+			               		<div class="msg-content">
+			                    	<h5>萊卡 <small>@spacesog</small></h5>
+			                   		 <p>嗨，大強，最近過得如何？</p>
+			                  </div>
+			                </a>
+			            </li>
+			            <li>
+			                <a href="#">
+			                <img src="imgs/doge.jpg" class="img-circle">
+			                <div class="msg-content">
+			                    <h5>大橘 <small>@dogeoficial </small></h5>
+			                    <p>哇！我是怎麼突然變成網紅的？</p>
+			                  </div>
+			                </a>
+			            </li>
+			            <li>
+			                <a href="#">
+			                  <img src="imgs/cat.jpg" class="img-circle">
+			                  <div class="msg-content">
+			                    <h5>瘋狂貓咪 <small>@crazycat</small></h5>
+			                    <p>你永遠都抓不到我的！</p>
+			                  </div>
+			                </a>
+			            </li>
+			            <li>
+			                <a href="#">
+			                   <img src="imgs/laika.jpg" class="img-circle">
+			                  <div class="msg-content">
+			                    <h5>萊卡 <small>@spacesog</small></h5>
+			                    <p>我覺得我在木星看到你了！你最近有去木星嗎？</p>
+			                  </div>
+			                </a>
+			              </li>
+		            </ul>					
 				</div>
 			</div>
 		</div>
